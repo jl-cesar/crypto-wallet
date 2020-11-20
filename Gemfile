@@ -40,6 +40,8 @@ gem 'tty-spinner'
 gem 'json'
 gem 'httparty'
 gem 'rails-i18n', '~> 5.1'
+gem 'webpacker'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,6 +65,7 @@ end
 group :production do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'pg'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
