@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('show.details') %></h1>
+
+<p>
+  <strong><%= t('show.descripition')  %></strong>
+  <%= @coin.descripition %>
+</p>
+
+<p>
+  <strong><%= t('show.acronym') %></strong>
+  <%= @coin.acronym %>
+</p>
+
+<p>
+  <strong><%= t('show.url_image') %></strong>
+  <%= image_tag @coin.url_image, size: "30x30" %>
+</p>
+
+
+<p>
+  <strong><%= t('show.mining_type_label') %></strong>
+  <%= @coin.mining_type.description %>
+</p>
+
+<%= link_to t('links.edit'), edit_coin_path(@coin), class: "btn btn-primary" %>
+<%= link_to t('links.back'), coins_path, class: "btn btn-primary" %>

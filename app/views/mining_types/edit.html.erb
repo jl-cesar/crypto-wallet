@@ -1,0 +1,6 @@
+<h1><%= t('actions.edit_mining_type_h1') %></h1>
+
+<%= render 'form', mining_type: @mining_type %>
+
+<%= link_to  t('links.show'), @mining_type, class: "btn btn-primary btn-lg btn btn-primary", role: "button" %>
+<%= link_to t('links.back'), mining_types_path, class: "btn btn-primary btn-lg btn btn-primary", role: "button"  %>

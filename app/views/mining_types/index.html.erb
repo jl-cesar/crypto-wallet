@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{MiningType.model_name.human(count: @mining_types.count)}" %></h1>
+
+<div class="card">
+  <div class="card-body">
+    <%= t('total_mining_types_count') %> <%= @mining_types.count %>
+  </div>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th><%= @mining_types.human_attribute_name(:description) %></th>
+      <th><%= @mining_types.human_attribute_name(:initials) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mining_types.each do |mining_type| %>
+      <tr>
+        <td><%= mining_type.description %></td>
+        <td><%= mining_type.initials %></td>
+        <td><%= link_to t('links.show'), mining_type %></td>
+        <td><%= link_to t('links.edit'), edit_mining_type_path(mining_type) %></td>
+        <td><%= link_to t('links.delete'), mining_type, method: :delete, data: { confirm: t('links.are_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to  t('actions.dashboard'), root_path, class: "btn btn-primary btn-lg btn-success", role: "button" %>
+<%= link_to t('actions.new_mining_type'), new_mining_type_path, class: "btn btn-primary btn-lg btn-dark", role: "button"  %>
+

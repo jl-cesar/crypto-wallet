@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{Coin.model_name.human(count: @coins.count)}" %></h1>
+
+<div class="card">
+  <div class="card-body">
+    <%= t('total_coins_count') %> <%= @coins.count %>
+  </div>
+</div>
+
+<table id="coinsTable" class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th ><%= @coins.human_attribute_name(:url_image) %></th>
+      <th><%= @coins.human_attribute_name(:acronym) %></th>
+      <th><%= @coins.human_attribute_name(:descripition) %></th>
+      <th><%= @coins.human_attribute_name(:mining_type) %></th> 
+      <th><%= t('quotation_BRL') %></th>
+      <th><%= t('quotation_USD') %></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= image_tag coin.url_image, size: "40x40" %></td> 
+        <td id="coin_acronym"><%= coin.acronym %></td>
+        <td><%= coin.descripition %></td>
+        <td><%= coin.mining_type.description %></td>
+        <td id="<%= coin.acronym %>">Indisponível</td>
+        <td id="<%= "#{coin.acronym}_USD" %>">Indisponível</td>
+        <td><%= link_to t('links.show'), coin %></td>
+        <td><%= link_to t('links.edit'), edit_coin_path(coin) %></td>
+        <td><%= link_to t('links.delete'), coin, method: :delete, data: { confirm: t('links.are_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to  t('actions.dashboard'), root_path, class: "btn btn-primary btn-lg btn-success", role: "button" %>
+<%= link_to t('actions.new_coin'), new_coin_path, class: "btn btn-primary btn-lg btn-dark", role: "button"  %>
+
+<script type="text/javascript">
+   var acronym_hash = [] 
+
+    $("td[id*='coin_acronym']").each(function(i, el) {
+        acronym = el.innerHTML;
+        acronym_hash.push(acronym)
+    });
+
+   function coinsTicker() {
+    $(acronym_hash).each((i, acronym) => {
+        fetch("https://api.blockchain.info/ticker?base=" + acronym).then(function(response) {
+            console.log(acronym)
+            response.json().then(function(data) {
+                quoteBRL = Math.round(data.BRL.last)
+                quoteUSD = Math.round(data.USD.last)
+                $(`#${acronym}`).html(`R$ ${quoteBRL}`)
+                $(`#${acronym}_USD`).html(`$ ${quoteUSD}`)
+            });
+        }).catch(function(err) {
+            console.error('Failed to return crypto quote!', err);
+        })
+    })    
+    }
+        
+    setInterval(coinsTicker, 30000)
+    
+</script>

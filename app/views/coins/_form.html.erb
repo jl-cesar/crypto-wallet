@@ -1,0 +1,43 @@
+<%= form_with(model: coin, local: true) do |form| %>
+  <% if coin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>
+
+      <ul>
+      <% coin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :descripition %>
+    <%= form.text_field :descripition, {class: "form-control", placeholder: "Bitcoin","autocomplete": "off", "required": "on"} %>
+    <small class="form-text text-muted"><%= t('new.small_description') %></small>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :acronym %>
+    <%= form.text_field :acronym, {class: "form-control", placeholder: "BTC", "autocomplete": "off", "required": "on"} %>
+    <small class="form-text text-muted"><%= t('new.small_acronym') %></small>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :url_image %>
+    <%= form.text_field :url_image, {class: "form-control", placeholder: "http://../image.png","autocomplete": "off", "required": "on"} %>
+    <small class="form-text text-muted"><%= t('new.small_image') %></small>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :mining_type_id %> <br>
+    <%= form.select("mining_type_id", @mining_types_options, class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit nil, {class: "btn btn-success"} %>
+  </div>
+  
+<% end %>
+
+

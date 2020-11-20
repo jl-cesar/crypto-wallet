@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('show.mining_type_description') %></strong>
+  <%= @mining_type.description %>
+</p>
+
+<p>
+  <strong><%= t('show.mining_type_initials') %></strong>
+  <%= @mining_type.initials %>
+</p>
+
+<%= link_to t('links.edit'), edit_coin_path(@mining_type), class: "btn btn-primary" %>
+<%= link_to t('links.back'), mining_types_path, class: "btn btn-primary" %>

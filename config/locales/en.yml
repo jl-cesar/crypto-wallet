@@ -1,0 +1,38 @@
+en:
+  hello_user: "Welcome to Crypto Wallet"
+  about_message: "Certainly not that I am what you were looking for"
+  home_app_options: "Start by selecting an option below:"
+  home_app_description: "Register and monitor your favorite cryptocurrencies!"
+  create_coin: "Coins"
+  manage_mining_type: "Manage Mining Types"
+  total_coins_count: "Total coins registered:"
+  total_mining_types_count: "Total Types of Mining registered:"
+  quotation_BRL: "Price in (BRL)"
+  quotation_USD: "Price in (USD)"
+  links:
+    edit: "Edit"
+    show: "Show"    
+    delete: "Delete"
+    back: "Back"
+    are_sure: "Are you sure?"
+  actions:
+    new_coin: "New Coin"
+    new_mining_type: "New Mining Type"
+    new_coin_h1: "New Coin"
+    edit_coin_h1: "Edit Coin"
+    new_mining_type_h1: "New Mining Type"
+    edit_mining_type_h1: "Edit Mining Type"    
+    dashboard: "Dashboard"
+  show:
+    descripition: "Description: "
+    acronym: "Acronym: "
+    url_image: "Image: "
+    details: "Coin Details"
+    mining_type_description: "Description: "
+    mining_type_initials: "Initials: "
+    mining_type_label: "Mining Type: "
+  new:
+    small_description: "Currency Name/Description"
+    small_image: "Image URL"
+    small_acronym: "Currency Acronym/Abbreviation"
+  
