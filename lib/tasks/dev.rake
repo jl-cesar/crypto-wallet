@@ -17,6 +17,25 @@ namespace :dev do
         %x(rails assets:precompile)
       end
     end
+
+    desc "Faz todo o processo para upload e commit git/heroku!"
+    task heroku_and_git_push: :environment do
+      run_spinner "Iniciando repositorio..." do 
+        %x(git init)
+      end
+
+      run_spinner "Adicionando arquivos ao repositorio..." do 
+        %x(git add .)
+      end
+
+      run_spinner "Faz o commit..." do 
+        %x(git commit -m "---")
+      end
+
+      run_spinner "Envia para producao no heroku..." do 
+        %x(git push heroku master)
+      end
+    end
   
     desc "Configura o ambiente de desenvolvimento"
     task setup: :environment do
