@@ -1,7 +1,5 @@
 class CoinsController < ApplicationController
-  # layout "adm"
 
-  # FAZ O SET DE @COIN PARA AS ACOES (SHOW, EDIT, UPDATE, DESTROY)
   before_action :set_coin, only: [:show, :edit, :update, :destroy]
   before_action :set_MiningTypes_Options, only: [:new, :edit, :create, :update]
 
@@ -81,9 +79,5 @@ end
     def set_MiningTypes_Options
       @mining_types_options = MiningType.all.pluck(:description,:id)
     end
-
-    #def set_CryptoImage_Options
-     # @crypto_images_options = 
-    #end
 
 end

@@ -6,14 +6,25 @@ namespace :dev do
       yield
       spinner.success("(Concluido!)")
     end  
+
+    desc "Remove os antigos assets e pre-compila os novos!"
+    task assets: :environment do
+      run_spinner "Removendo antigos assets..." do 
+        %x(rails assets:clobber)
+      end
+
+      run_spinner "Compilando novos assets..." do 
+        %x(rails assets:precompile)
+      end
+    end
   
     desc "Configura o ambiente de desenvolvimento"
     task setup: :environment do
-        run_spinner("Criando BD...") { %x(rails db:create RAILS_ENV=production) }
-        run_spinner("Migrando BD...") { %x(rails db:migrate RAILS_ENV=production) }
-        run_spinner("Realizando Seed...") { %x(rails db:seed RAILS_ENV=production) }
-        #%x(rails dev:add_mining_types)
-        #%x(rails dev:add_coins)
+        run_spinner("Criando BD...") { %x(rails db:create) }
+        run_spinner("Migrando BD...") { %x(rails db:migrate) }
+        run_spinner("Realizando Seed...") { %x(rails db:seed) }
+        %x(rails dev:add_mining_types)
+        %x(rails dev:add_coins)
     end
 
     desc "Cadastro de moedas padrões"

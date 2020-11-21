@@ -17,7 +17,7 @@
       <th><%= @coins.human_attribute_name(:mining_type) %></th> 
       <th><%= t('quotation_BRL') %></th>
       <th><%= t('quotation_USD') %></th>
-      <th colspan="4"></th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -29,10 +29,10 @@
         <td><%= coin.descripition %></td>
         <td><%= coin.mining_type.description %></td>
         <td id="<%= coin.acronym %>">Indisponível</td>
-        <td id="<%= "#{coin.acronym}_USD" %>">Indisponível</td>
-        <td><%= link_to t('links.show'), coin %></td>
-        <td><%= link_to t('links.edit'), edit_coin_path(coin) %></td>
-        <td><%= link_to t('links.delete'), coin, method: :delete, data: { confirm: t('links.are_sure') } %></td>
+        <td id='<%= "#{coin.acronym}_USD" %>'>Indisponível</td>
+        <td><%= link_to t('links.show'), coin, class: "btn btn-info" %></td>
+        <td><%= link_to t('links.edit'), edit_coin_path(coin), class: "btn btn-warning" %></td>
+        <td><%= button_to t('links.delete'), coin, method: :delete, confirm: t('links.are_sure'), class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

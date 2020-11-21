@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :mining_types
   # get 'home/index'
-  #get '/', to: 'home#index'
+  #get '/moedas', to: 'coins#index'
 
   # DEFINE INDEX INICIAL PARA A ROTA "/"
   root "home#index" 
