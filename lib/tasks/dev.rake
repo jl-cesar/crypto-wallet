@@ -29,9 +29,10 @@ namespace :dev do
       end
 
       run_spinner "Faz o commit..." do 
-        %x(git commit -m "---")
+        %x(git commit -m "Added/fixed notify.js")
       end
 
+      
       run_spinner "Envia para producao no heroku..." do 
         %x(git push heroku master)
       end
